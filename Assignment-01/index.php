@@ -31,7 +31,7 @@
     <div class="col">
         <div class="form-group">
             <label for="cid">Customer ID</label>
-            <input type="text" class="form-control"  onclick="validation(reg)" name="cid" id="txtcid">
+            <input type="text" class="form-control"  name="cid" id="txtcid">
         </div>
     </div>
     <div class="col">
@@ -43,7 +43,7 @@
     <div class="col">
         <div class="form-group">
             <label for="tel">Telephone No</label>
-            <input type="tel" class="form-control"  placeholder="011-1234567" name="tel" id="txttel">
+            <input type="number" class="form-control"  placeholder="011-1234567" name="tel" id="txttel">
         </div>
     </div>
     <div class="col">
@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="col">
-        <button type="button" class="btn-success" id="btnadd">Add</button>
+        <button type="submit" class="btn-success" id="btnadd">Add</button>
     </div>
 </form>
 <script src="js/jquery-3.4.1.min.js"></script>
@@ -76,13 +76,13 @@
             var regEx = /^[a-zA-Z]*$/;
             var result = regEx.test(value);
             if (!result) {
-                alert("Name Is Invalide..Please Input Only Letters");
+                alert("Name Is Invalid..Please Input Only Letters And Remove White Spaces");
             }
         })
     ) ;
     //validation for salary
     if (
-        $("#btnadd").click(function () {
+        $("#txtsal").click(function () {
             var value = $("#txtsal").val();
             var regEx = /^\d{1,6}\.\d{1,6}$/;
             var result = regEx.test(value);
@@ -92,18 +92,20 @@
         })
     ) ;
     //Validation For Customer ID
-    //
-    //
-    //
-
+   $("#btnadd").click(function () {
+       var cid=$("#txtcid").val();
+       var regEx ="/C-\d{3}/";
+       var result=regEx.test(cid);
+       if (!result) {
+           alert("ID is Invalid")
+       }
+   });
+   $("#txtcid").keyup(function () {
+       if($("#txtcid").val().length>4){
+           alert("Hariyata Balala Gahapan")
+       }
+   });
     //Validate Empty Space
-    function validation(reg) {
-        str = document.reg;
-        if (str.name.value.trim() == "") {
-            alert("Enter your name");
-            str.name.focus();
-            return false;
-        }
 
 </script>
 </body>
